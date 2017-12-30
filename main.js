@@ -20,7 +20,7 @@ class Blockchain {
     }
 
     createGenesisBlock() {
-       return new Block(0, '30/12/2017', 'Genesis Block', '0'); 
+       return new Block(0, '1/12/2017', 'Genesis Block', '0'); 
     }
 
     getLatestBlock() {
@@ -33,3 +33,8 @@ class Blockchain {
         this.chain.push(newBlock);
     }
 }
+
+let zerCoin = new Blockchain;
+zerCoin.addBlock(new Block(1, '5/12/2017', {amount: 1}));
+zerCoin.addBlock(new Block(2, '7/12/2017', {amount: 5}));
+zerCoin.addBlock(new Block(3, '9/12/2017', {amount: 12}));
