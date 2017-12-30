@@ -7,7 +7,7 @@ class Block {
         this.timestamp = timestamp;
         this.data = data;
         this.previousHash = previousHash;
-        this.hash = this.calculateHash;
+        this.hash = this.calculateHash();
     }
     calculateHash() {
         return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();
@@ -38,3 +38,4 @@ let zerCoin = new Blockchain;
 zerCoin.addBlock(new Block(1, '5/12/2017', {amount: 1}));
 zerCoin.addBlock(new Block(2, '7/12/2017', {amount: 5}));
 zerCoin.addBlock(new Block(3, '9/12/2017', {amount: 12}));
+
