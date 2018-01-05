@@ -1,6 +1,5 @@
 const SHA256 = require('crypto-js/sha256')
 
-
 class Block {
     constructor(index,timestamp, data, previousHash = '') {
         this.index = index;
@@ -19,14 +18,14 @@ class Block {
             this.nonce++;
             this.hash = this.calculateHash();
         }
-        console.log('Block mined' + this.hash)
+        console.log('Block mined: ' + this.hash)
     }
 }
 
 class Blockchain {
     constructor() {
         this.chain = [this.createGenesisBlock()];
-        this.difficulty = 2;
+        this.difficulty = 3;
     }
 
     createGenesisBlock() {
@@ -56,6 +55,11 @@ class Blockchain {
 }
 
 let zerCoin = new Blockchain;
-zerCoin.addBlock(new Block(1, '5/12/2017', {amount: 1}));
-zerCoin.addBlock(new Block(2, '7/12/2017', {amount: 5}));
-zerCoin.addBlock(new Block(3, '9/12/2017', {amount: 12}));
+let time = 0;
+while (time < 30) {
+    time++
+    console.log(`mining block ${zerCoin.chain[zerCoin.chain.length - 1].index + 1}`);
+    zerCoin.addBlock(new Block(zerCoin.chain[zerCoin.chain.length - 1].index + 1, Date.now(), {amount: Math.random() * 100}));
+};
+// zerCoin.chain[1].data = {amount: 10000000}
+console.log(zerCoin.isChainValid() ? `this is your zerCoin chain: ${JSON.stringify(zerCoin.chain, null, 2)}` : `Blockchain not valid`);
