@@ -25,7 +25,7 @@ class Block {
 class Blockchain {
     constructor() {
         this.chain = [this.createGenesisBlock()];
-        this.difficulty = 3;
+        this.difficulty = 4;
     }
 
     createGenesisBlock() {
@@ -56,7 +56,7 @@ class Blockchain {
 
 let zerCoin = new Blockchain;
 let time = 0;
-while (time < 30) {
+while (time < 10) {
     time++
     console.log(`mining block ${zerCoin.chain[zerCoin.chain.length - 1].index + 1}`);
     zerCoin.addBlock(new Block(zerCoin.chain[zerCoin.chain.length - 1].index + 1, Date.now(), {amount: Math.random() * 100}));
