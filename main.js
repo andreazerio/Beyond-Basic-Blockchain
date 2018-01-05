@@ -12,6 +12,13 @@ class Block {
     calculateHash() {
         return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data)).toString();
     }
+
+    mineBlock(difficulty) {
+        while(this.hash.substring(0, difficulty) !== Array(difficulty + 1).join('0')) {
+            this.hash = this.calculateHash();
+        }
+        console.log('Block mined' + this.hash)
+    }
 }
 
 class Blockchain {
@@ -52,5 +59,4 @@ zerCoin.addBlock(new Block(3, '9/12/2017', {amount: 12}));
 
 zerCoin.chain[1].data = {amount: 100}
 zerCoin.chain[1].calculateHash();
-zerCoin.chain[2].previousHash = zerCoin.chain[1].calculateHash();
 console.log(zerCoin.isChainValid() ? 'blockchain is valid' : 'error in the blockchain');
