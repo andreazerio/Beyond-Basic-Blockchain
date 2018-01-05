@@ -1,4 +1,4 @@
-# SIMPLE BLOCKCHAIN
+# Beyond Basic Blockchain
 
 ## Overview
 
