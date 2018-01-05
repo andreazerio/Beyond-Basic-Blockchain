@@ -50,3 +50,7 @@ zerCoin.addBlock(new Block(1, '5/12/2017', {amount: 1}));
 zerCoin.addBlock(new Block(2, '7/12/2017', {amount: 5}));
 zerCoin.addBlock(new Block(3, '9/12/2017', {amount: 12}));
 
+zerCoin.chain[1].data = {amount: 100}
+zerCoin.chain[1].calculateHash();
+zerCoin.chain[2].previousHash = zerCoin.chain[1].calculateHash();
+console.log(zerCoin.isChainValid() ? 'blockchain is valid' : 'error in the blockchain');
